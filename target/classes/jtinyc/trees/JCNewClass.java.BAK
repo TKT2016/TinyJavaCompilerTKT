@@ -1,0 +1,27 @@
+package jtinyc.trees;
+
+import jtinyc.symbols.BMethodSymbol;
+
+import java.util.ArrayList;
+
+/** 创建实例表达式 new(...) 表达式 */
+public class JCNewClass extends JCExpression
+{
+    /** 类型表达式 */
+    public JCIdent clazzExpr;
+
+    /** 构造函数实参列表 */
+    public ArrayList<JCExpression> args;
+
+    @Override
+    public <D> void scan(TreeScanner<D> v, D arg){ v.visitNewClass(this, arg); }
+
+    @Override
+    public <D> JCTree translate(TreeTranslator<D> v, D arg) {
+        return v.translateNewClass(this, arg);
+    }
+
+    /** 构造函数符号 */
+    public BMethodSymbol constructorSymbol;
+}
+

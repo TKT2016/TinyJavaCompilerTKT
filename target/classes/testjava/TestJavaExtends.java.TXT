@@ -1,0 +1,14 @@
+package testjava;
+
+public class TestJavaExtends {
+}
+
+class A1
+{
+    private int f1;
+}
+
+class A2 extends A1
+{
+    private int f1;
+}
